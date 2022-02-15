@@ -1,0 +1,135 @@
+Exercicios iniciais - Nivelamento - Unidade 00b
+Autor: Barbara Maria Sampaio Portes - 631948
+
+5- O que o código abaixo faz?
+
+boolean doidao (char c){
+boolean resp= false;
+int v = (int) c;
+if (v == 65 || v == 69 || v == 73 || v == 79 || v == 85 || v == 97 || v == 101 || v ==105 ||
+ v == 111 || v == 117){
+resp = true;
+}
+return resp;
+}
+
+Resposta: O método testa se o caracter é uma vogal, maiusculo ou minusculo.
+
+6- Um aluno desenvolveu o código abaixo, corrija-o:
+
+boolean isConsoante(String s, int n){
+ boolean resp= true;
+ if (n!=s.length()){
+ if (s.charAt(n)<'0' || s.charAt(n)>'9'){
+ if (s.charAt(n)=='A' || s.charAt(n)=='E' || s.charAt(n)=='I' || s.charAt(n)=='O' ||
+ s.charAt(n)=='U' || s.charAt(n)=='a' || s.charAt(n)=='e' || s.charAt(n)=='i' ||
+ s.charAt(n)=='o' || s.charAt(n)=='u'){
+ resp= false;
+ } else{
+ n++;
+ resp=isConsoante(s, n);
+ }
+ } else {
+ resp=false;
+ }
+ }
+ return resp;
+ }
+
+ Resposta: 
+boolean isConsoante(String s, int i)
+    {
+        boolean resp = true;
+        if (i == s.length())
+        {
+            resp = true;
+        }
+        else if (isConsoante(s.charAt(i)) == false)
+        {
+            resp = false;
+        }
+        else
+        {
+            resp = isConsoante(s, i + 1);
+        }
+        return resp;
+    }
+
+7- Qual das duas versões é mais fácil de entender?
+
+boolean isConsoante(String s, int i){
+boolean resp= true;
+if (i == s.length()){
+resp = true;
+} else if (isConsoante(s.charAt(i)) == false){
+resp = false;
+} else {
+resp = isConsoante(s, i + 1);
+}
+return resp;
+}
+---------------------------------------------------------
+boolean isConsoante(String s, int i){
+boolean resp= true;
+if (i < s.length()){
+if (!isConsoante(s.charAt(i))){
+resp = false;
+} else {
+resp = isConsoante(s, i + 1);
+}
+} else {
+resp = true;
+}
+return resp;
+}
+
+Resposta: A primeira opção é mais facil de entender.
+
+8-Qual é a sua opinião sobre o código REAL abaixo?
+
+Unidade recuperarUnidadeComCodigoDeUCI(Unidade unidadeFilha) {
+Unidade retorno = null;
+if (unidadeFilha.getCodUci() != null && !unidadeFilha.getCodUci().isEmpty()) {
+retorno = unidadeFilha;
+} else {
+retorno = unidadeFilha.getUnidadeSuperior();
+}
+while (retorno == null || retorno.getCodUci() == null || retorno.getCodUci().isEmpty()) {
+retorno = retorno.getUnidadeSuperior();
+}
+return retorno;
+}
+
+9- Qual é a diferença entre os dois métodos abaixo?
+
+int m1(int i){
+return i--;
+}
+
+int m2(int i){
+return --i;
+}
+
+Resposta: No primeiro método o valor de i é decrementado depois do comando
+e o no segundo método o valor de i é decrementado antes do comando.
+
+10- O que o programa abaixo mostra na tela?
+
+byte b = 0; short s = 0; int i = 0; long l = 0;
+ while (true){
+ b++; s++; i++; l++;
+ System.out.println(b + “ ” + s + “ ” + i + “ ” + l);
+ }
+
+ Resposta: O programa vai mostrar um loop por causa do while(true).
+
+ 11- Por que o código abaixo imprime [46 - 11]?
+
+int x = 23, y = 23;
+x = x << 1;
+y = y >> 1;
+System.out.println(“[” + x + “ - ” + y + “]”);
+
+Resposta: O operador shift left << no x desloca os bits para a esquerda e faz com que ele seja multiplicado por 2 
+e o operador shift right >> no y desloca os bits para a direita e faz com que ele seja dividido por 2.
+
