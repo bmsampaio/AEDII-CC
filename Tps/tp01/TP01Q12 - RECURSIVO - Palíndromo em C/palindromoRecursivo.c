@@ -54,15 +54,15 @@ bool isPalindromo(char str[], int i)
 {
     bool resposta = true;
     int tamanho = strlen(str)-1;
-    char ultimoChar = str[tamanho-i];
-    printf("%i\n",tamanho);    
+    char ultimoChar = str[tamanho];
+   // printf("%i\n",tamanho);    
     // condicao de parada
     if (i < strlen(str))
     {
         /**se o caracter na posicao i for diferente do caracter na posicao (tamanho-i),
         entao a string nao e um palindromo -> retornar falso.
         */
-        printf("%c - %c\n",str[i],ultimoChar);
+        //printf("%c - %c\n",str[i],ultimoChar);
         if (str[i] != ultimoChar)
         {
             resposta = false;
