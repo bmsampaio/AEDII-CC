@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+
+typedef struct
+{
+    char nome[20];
+    int altura;
+    double peso;
+    char corDeCabelo[20];
+    char corDaPele[20];
+    char corDosOlhos[20];
+    char anoNascimento[20];
+    char genero[20];
+    char homeworld[20];
+
+} Personagem; // end personagens
+
+// variaveis globais
+Personagem p[100];
+int COUNT = 0;
+
+/**
+ * ler - metodo para ler e tratar o arquivo aberto pelo caminho
+ * e retirar os espacos vazios.
+ *
+ * @param caminho - string contendo o caminho do arquivo.
+ *
+ */
+void ler(char caminho[])
+{
+    // leitura do arquivo
+    caminho[strcspn(caminho, "\n")] = 0;
+    FILE *arq = fopen((caminho), "r");
+    char linha[500];
+    if (!arq)
+        printf("Erro, nao foi possivel abrir o arquivo\n");
+    else
+    {
+        fgets(linha, 500, arq);
+        printf("%s", linha);
+    }
+}
+
+/**
+ * isFim - metodo para dizer se a string recebida
+ * e a palavra FIM.
+ *
+ * @param str - string a ser analizada.
+ * @return true - se a string for a palavra FIM;
+ *         false- caso contrario.
+ */
+bool isFim(char *str)
+{
+    bool resposta = false;
+    int tamanho = strlen(str);
+    if (str[0] == 'F' && str[1] == 'I' && str[2] == 'M')
+    {
+        resposta = true;
+    } // end if
+    return resposta;
+} // end isFim
+
+int main(void)
+{
+    char entrada[1000];
+    int numEntrada = 0;
+    // Leitura da entrada padrao
+    fgets(entrada, 200, stdin);
+    while (isFim(entrada) == false)
+    {
+        printf("%s\n", entrada);
+        ler(entrada);
+        numEntrada++;
+        fgets(entrada, 200, stdin);
+    }
+
+    return 0;
+}
